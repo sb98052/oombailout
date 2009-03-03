@@ -16,14 +16,11 @@ if [ -f /etc/sysconfig/$name ]; then
     . /etc/sysconfig/$name
 fi
 
-backend=${BACKEND-/oombailout}
-
-conf=${CONF-/etc/$name.conf}
 pidfile=${PIDFILE-/var/run/$name.pid}
 lockfile=${LOCKFILE-/var/lock/subsys/$name}
 RETVAL=0
 
-oombailout=${OOM- "/usr/bin/oombailout"}
+oombailout=${OOMBAILOUT- "/usr/bin/oombailout.py"}
 
 case "$1" in
     start)

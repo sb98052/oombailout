@@ -38,7 +38,7 @@ oombailout aims to avert OOMs that the kernel is not aggressive enough to stop. 
 %build
 
 %install
-install -D -m 755 oombailout $RPM_BUILD_ROOT/usr/bin/oombailout
+install -D -m 755 oombailout.py $RPM_BUILD_ROOT/usr/bin/oombailout.py
 install -D -m 755 oombailout-initscript $RPM_BUILD_ROOT/%{_sysconfdir}/init.d/oombailout
 install -D -m 644 oombailout.logrotate $RPM_BUILD_ROOT/%{_sysconfdir}/logrotate.d/oombailout
 
