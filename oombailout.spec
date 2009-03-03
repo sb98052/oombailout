@@ -47,6 +47,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 /usr/bin/oombailout.py
+/usr/bin/oombailout.pyc
+/usr/bin/oombailout.pyo
 %{_sysconfdir}/init.d/oombailout
 %{_sysconfdir}/logrotate.d/oombailout
 
