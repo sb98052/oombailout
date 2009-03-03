@@ -1,0 +1,54 @@
+#!/bin/bash
+#
+# description: oombailout startup
+#
+# Sapan Bhatia <sapanb@cs.princeton.edu>
+#
+# $Id$
+# $HeadURL$
+#
+name="oombailout"
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+if [ -f /etc/sysconfig/$name ]; then
+    . /etc/sysconfig/$name
+fi
+
+backend=${BACKEND-/oombailout}
+
+conf=${CONF-/etc/$name.conf}
+pidfile=${PIDFILE-/var/run/$name.pid}
+lockfile=${LOCKFILE-/var/lock/subsys/$name}
+RETVAL=0
+
+oombailout=${OOM- "/usr/bin/oombailout"}
+
+case "$1" in
+    start)
+        echo -n "Starting $name:"
+        if [ ! -d $backend ]; then mkdir $backend; fi
+        daemon --check=oombailout $oombailout 
+        RETVAL=$?
+        echo
+        [ $RETVAL -eq 0 ] && touch ${lockfile}
+        ;;
+    stop)
+        echo -n "Stopping $name:"
+        killproc $name
+        RETVAL=$?
+        echo
+        [ $RETVAL -eq 0 ] && rm -f ${lockfile} ${pidfile}
+        ;;
+    restart)
+        $0 stop
+        $0 start
+        RETVAL=$?
+        ;;
+    *)
+        echo $"Usage: $0 {start|stop|restart}"
+        exit 1
+        ;;
+esac
+
