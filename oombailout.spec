@@ -46,7 +46,7 @@ install -D -m 644 oombailout.logrotate $RPM_BUILD_ROOT/%{_sysconfdir}/logrotate.
 rm -rf $RPM_BUILD_ROOT
 
 %files
-/usr/bin/oombailout
+/usr/bin/oombailout.py
 %{_sysconfdir}/init.d/oombailout
 %{_sysconfdir}/logrotate.d/oombailout
 
