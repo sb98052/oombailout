@@ -55,7 +55,7 @@ def createDaemon():
    return(0)
 
 
-def get_free_lowmem:
+def get_free_lowmem():
     meminfo=open('/proc/meminfo').read();
     m=re.search(r'LowFree:\s+(\d+)\s+kB',meminfo);
     lowfree=int(m.group(1))
