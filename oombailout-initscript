@@ -1,5 +1,6 @@
 #!/bin/bash
 #
+# chkconfig: 345 84 02
 # description: oombailout startup
 #
 # Sapan Bhatia <sapanb@cs.princeton.edu>
